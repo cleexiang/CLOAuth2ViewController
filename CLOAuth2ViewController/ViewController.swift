@@ -29,8 +29,9 @@ class ViewController: UIViewController {
 
     func btnAction(sender: AnyObject) {
         let oauthVC = CLOAuthViewController(baseURL: "https://www.github.com", path: "login/oauth/authorize",
-            clientId: "97c3ec6cf4d92c7ba7bf", scopes: ["user"], redirectUri: "GitStarMan://oauth")
-        self.presentViewController(oauthVC, animated: true) { () -> Void in
+            clientId: "97c3ec6cf4d92c7ba7bf", scopes: ["user", "repo", "notifications"], redirectUri: "http://cleexiang.github.io")
+        let nav = UINavigationController(rootViewController: oauthVC)
+        self.presentViewController(nav, animated: true) { () -> Void in
 
         }
     }
