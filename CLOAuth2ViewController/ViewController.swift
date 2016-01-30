@@ -8,7 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+let clientId: String = "Your client id"
+let clientSecret: String = "Your client secret"
+
+class ViewController: UIViewController, CLOAuthViewControllerDelegate {
+
+    var lblStatus: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +25,10 @@ class ViewController: UIViewController {
         self.view.addSubview(loginBtn)
         loginBtn.setTitle("Login", forState: .Normal)
         loginBtn.addTarget(self, action: Selector("btnAction:"), forControlEvents: .TouchUpInside)
+
+        self.lblStatus = UILabel(frame: CGRectMake(20, 140, 400, 20))
+        self.lblStatus.textColor = UIColor.blackColor()
+        self.view.addSubview(self.lblStatus)
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,11 +37,26 @@ class ViewController: UIViewController {
     }
 
     func btnAction(sender: AnyObject) {
-        let oauthVC = CLOAuthViewController(baseURL: "https://www.github.com", path: "login/oauth/authorize",
-            clientId: "97c3ec6cf4d92c7ba7bf", scopes: ["user", "repo", "notifications"], redirectUri: "http://cleexiang.github.io")
+        let oauthVC = CLOAuthViewController(baseURL: "https://www.github.com",
+            path: "login/oauth/authorize",
+            clientId: clientId,
+            clientSecret: clientSecret,
+            scopes: ["user", "repo", "notifications"],
+            redirectUri: "http://www.github.com")
+        oauthVC.delegate = self
         let nav = UINavigationController(rootViewController: oauthVC)
         self.presentViewController(nav, animated: true) { () -> Void in
 
         }
+    }
+
+    func oauthSuccess(viewController: CLOAuthViewController, accessToken: String) {
+        self.lblStatus.text = "Success!" + accessToken
+        viewController.dismissViewControllerAnimated(true, completion: nil)
+    }
+
+    func oauthFail(viewController: CLOAuthViewController, error: NSError?) {
+        NSLog("%@", (error?.localizedDescription)!)
+        viewController.dismissViewControllerAnimated(true, completion: nil)
     }
 }
