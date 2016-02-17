@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CLOAuth2ViewController
 
 let clientId: String = "Your client id"
 let clientSecret: String = "Your client secret"

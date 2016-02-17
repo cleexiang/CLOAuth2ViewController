@@ -7,282 +7,159 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		71FBA5FB1C5734AD008A094A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FBA5FA1C5734AD008A094A /* AppDelegate.swift */; };
-		71FBA6001C5734AD008A094A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71FBA5FE1C5734AD008A094A /* Main.storyboard */; };
-		71FBA6021C5734AD008A094A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71FBA6011C5734AD008A094A /* Assets.xcassets */; };
-		71FBA6051C5734AD008A094A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71FBA6031C5734AD008A094A /* LaunchScreen.storyboard */; };
-		71FBA6101C5734AD008A094A /* CLOAuth2ViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FBA60F1C5734AD008A094A /* CLOAuth2ViewControllerTests.swift */; };
-		71FBA61C1C573671008A094A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FBA61B1C573671008A094A /* Alamofire.framework */; };
-		71FBA61F1C57418F008A094A /* CLOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FBA61E1C57418F008A094A /* CLOAuthViewController.swift */; };
-		71FBA6211C5754C7008A094A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FBA6201C5754C7008A094A /* ViewController.swift */; };
-		71FBA6231C575C85008A094A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FBA61B1C573671008A094A /* Alamofire.framework */; };
-		71FBA6241C575C85008A094A /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71FBA61B1C573671008A094A /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		713DCBC81C741CDD00F437A8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713DCBC71C741CDD00F437A8 /* Alamofire.framework */; };
+		718056771C737900004624BE /* CLOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718056751C737900004624BE /* CLOAuthViewController.swift */; };
+		718056781C737900004624BE /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 718056761C737900004624BE /* Info.plist */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		71FBA60C1C5734AD008A094A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 71FBA5EF1C5734AD008A094A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 71FBA5F61C5734AD008A094A;
-			remoteInfo = CLOAuth2ViewController;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		71FBA6251C575C85008A094A /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				71FBA6241C575C85008A094A /* Alamofire.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		71FBA5F71C5734AD008A094A /* CLOAuth2ViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLOAuth2ViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		71FBA5FA1C5734AD008A094A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		71FBA5FF1C5734AD008A094A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		71FBA6011C5734AD008A094A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		71FBA6041C5734AD008A094A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		71FBA6061C5734AD008A094A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		71FBA60B1C5734AD008A094A /* CLOAuth2ViewControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CLOAuth2ViewControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		71FBA60F1C5734AD008A094A /* CLOAuth2ViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLOAuth2ViewControllerTests.swift; sourceTree = "<group>"; };
-		71FBA6111C5734AD008A094A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		71FBA61B1C573671008A094A /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		71FBA61E1C57418F008A094A /* CLOAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLOAuthViewController.swift; sourceTree = "<group>"; };
-		71FBA6201C5754C7008A094A /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		713DCBC71C741CDD00F437A8 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		718056631C737837004624BE /* CLOAuth2ViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CLOAuth2ViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		718056751C737900004624BE /* CLOAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CLOAuthViewController.swift; path = Source/CLOAuthViewController.swift; sourceTree = SOURCE_ROOT; };
+		718056761C737900004624BE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Source/Info.plist; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		71FBA5F41C5734AD008A094A /* Frameworks */ = {
+		7180565F1C737837004624BE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71FBA61C1C573671008A094A /* Alamofire.framework in Frameworks */,
-				71FBA6231C575C85008A094A /* Alamofire.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		71FBA6081C5734AD008A094A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				713DCBC81C741CDD00F437A8 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		71FBA5EE1C5734AD008A094A = {
+		718056591C737837004624BE = {
 			isa = PBXGroup;
 			children = (
-				71FBA61A1C573661008A094A /* Frameworks */,
-				71FBA5F91C5734AD008A094A /* CLOAuth2ViewController */,
-				71FBA60E1C5734AD008A094A /* CLOAuth2ViewControllerTests */,
-				71FBA5F81C5734AD008A094A /* Products */,
+				713DCBC71C741CDD00F437A8 /* Alamofire.framework */,
+				718056651C737837004624BE /* CLOAuth2ViewController */,
+				718056641C737837004624BE /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		71FBA5F81C5734AD008A094A /* Products */ = {
+		718056641C737837004624BE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				71FBA5F71C5734AD008A094A /* CLOAuth2ViewController.app */,
-				71FBA60B1C5734AD008A094A /* CLOAuth2ViewControllerTests.xctest */,
+				718056631C737837004624BE /* CLOAuth2ViewController.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		71FBA5F91C5734AD008A094A /* CLOAuth2ViewController */ = {
+		718056651C737837004624BE /* CLOAuth2ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				71FBA61D1C57418F008A094A /* Source */,
-				71FBA5FA1C5734AD008A094A /* AppDelegate.swift */,
-				71FBA6201C5754C7008A094A /* ViewController.swift */,
-				71FBA5FE1C5734AD008A094A /* Main.storyboard */,
-				71FBA6011C5734AD008A094A /* Assets.xcassets */,
-				71FBA6031C5734AD008A094A /* LaunchScreen.storyboard */,
-				71FBA6061C5734AD008A094A /* Info.plist */,
+				718056751C737900004624BE /* CLOAuthViewController.swift */,
+				718056761C737900004624BE /* Info.plist */,
 			);
 			path = CLOAuth2ViewController;
 			sourceTree = "<group>";
 		};
-		71FBA60E1C5734AD008A094A /* CLOAuth2ViewControllerTests */ = {
-			isa = PBXGroup;
-			children = (
-				71FBA60F1C5734AD008A094A /* CLOAuth2ViewControllerTests.swift */,
-				71FBA6111C5734AD008A094A /* Info.plist */,
-			);
-			path = CLOAuth2ViewControllerTests;
-			sourceTree = "<group>";
-		};
-		71FBA61A1C573661008A094A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				71FBA61B1C573671008A094A /* Alamofire.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		71FBA61D1C57418F008A094A /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				71FBA61E1C57418F008A094A /* CLOAuthViewController.swift */,
-			);
-			path = Source;
-			sourceTree = SOURCE_ROOT;
-		};
 /* End PBXGroup section */
 
-/* Begin PBXNativeTarget section */
-		71FBA5F61C5734AD008A094A /* CLOAuth2ViewController */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 71FBA6141C5734AD008A094A /* Build configuration list for PBXNativeTarget "CLOAuth2ViewController" */;
-			buildPhases = (
-				71FBA5F31C5734AD008A094A /* Sources */,
-				71FBA5F41C5734AD008A094A /* Frameworks */,
-				71FBA5F51C5734AD008A094A /* Resources */,
-				71FBA6251C575C85008A094A /* Embed Frameworks */,
+/* Begin PBXHeadersBuildPhase section */
+		718056601C737837004624BE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = CLOAuth2ViewController;
-			productName = CLOAuth2ViewController;
-			productReference = 71FBA5F71C5734AD008A094A /* CLOAuth2ViewController.app */;
-			productType = "com.apple.product-type.application";
+			runOnlyForDeploymentPostprocessing = 0;
 		};
-		71FBA60A1C5734AD008A094A /* CLOAuth2ViewControllerTests */ = {
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		718056621C737837004624BE /* iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 71FBA6171C5734AD008A094A /* Build configuration list for PBXNativeTarget "CLOAuth2ViewControllerTests" */;
+			buildConfigurationList = 7180566B1C737837004624BE /* Build configuration list for PBXNativeTarget "iOS" */;
 			buildPhases = (
-				71FBA6071C5734AD008A094A /* Sources */,
-				71FBA6081C5734AD008A094A /* Frameworks */,
-				71FBA6091C5734AD008A094A /* Resources */,
+				7180565E1C737837004624BE /* Sources */,
+				7180565F1C737837004624BE /* Frameworks */,
+				718056601C737837004624BE /* Headers */,
+				718056611C737837004624BE /* Resources */,
+				713DCBC91C741CF300F437A8 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				71FBA60D1C5734AD008A094A /* PBXTargetDependency */,
 			);
-			name = CLOAuth2ViewControllerTests;
-			productName = CLOAuth2ViewControllerTests;
-			productReference = 71FBA60B1C5734AD008A094A /* CLOAuth2ViewControllerTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
+			name = iOS;
+			productName = CLOAuth2ViewController;
+			productReference = 718056631C737837004624BE /* CLOAuth2ViewController.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		71FBA5EF1C5734AD008A094A /* Project object */ = {
+		7180565A1C737837004624BE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = cleexiang;
 				TargetAttributes = {
-					71FBA5F61C5734AD008A094A = {
+					718056621C737837004624BE = {
 						CreatedOnToolsVersion = 7.2;
-					};
-					71FBA60A1C5734AD008A094A = {
-						CreatedOnToolsVersion = 7.2;
-						TestTargetID = 71FBA5F61C5734AD008A094A;
 					};
 				};
 			};
-			buildConfigurationList = 71FBA5F21C5734AD008A094A /* Build configuration list for PBXProject "CLOAuth2ViewController" */;
+			buildConfigurationList = 7180565D1C737837004624BE /* Build configuration list for PBXProject "CLOAuth2ViewController" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 			);
-			mainGroup = 71FBA5EE1C5734AD008A094A;
-			productRefGroup = 71FBA5F81C5734AD008A094A /* Products */;
+			mainGroup = 718056591C737837004624BE;
+			productRefGroup = 718056641C737837004624BE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				71FBA5F61C5734AD008A094A /* CLOAuth2ViewController */,
-				71FBA60A1C5734AD008A094A /* CLOAuth2ViewControllerTests */,
+				718056621C737837004624BE /* iOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		71FBA5F51C5734AD008A094A /* Resources */ = {
+		718056611C737837004624BE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71FBA6051C5734AD008A094A /* LaunchScreen.storyboard in Resources */,
-				71FBA6021C5734AD008A094A /* Assets.xcassets in Resources */,
-				71FBA6001C5734AD008A094A /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		71FBA6091C5734AD008A094A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				718056781C737900004624BE /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXSourcesBuildPhase section */
-		71FBA5F31C5734AD008A094A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
+/* Begin PBXShellScriptBuildPhase section */
+		713DCBC91C741CF300F437A8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71FBA6211C5754C7008A094A /* ViewController.swift in Sources */,
-				71FBA61F1C57418F008A094A /* CLOAuthViewController.swift in Sources */,
-				71FBA5FB1C5734AD008A094A /* AppDelegate.swift in Sources */,
+			);
+			inputPaths = (
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
-		71FBA6071C5734AD008A094A /* Sources */ = {
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7180565E1C737837004624BE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71FBA6101C5734AD008A094A /* CLOAuth2ViewControllerTests.swift in Sources */,
+				718056771C737900004624BE /* CLOAuthViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		71FBA60D1C5734AD008A094A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 71FBA5F61C5734AD008A094A /* CLOAuth2ViewController */;
-			targetProxy = 71FBA60C1C5734AD008A094A /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		71FBA5FE1C5734AD008A094A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				71FBA5FF1C5734AD008A094A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		71FBA6031C5734AD008A094A /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				71FBA6041C5734AD008A094A /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		71FBA6121C5734AD008A094A /* Debug */ = {
+		718056691C737837004624BE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -301,6 +178,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -323,10 +201,13 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		71FBA6131C5734AD008A094A /* Release */ = {
+		7180566A1C737837004624BE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -345,6 +226,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -359,95 +241,78 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		71FBA6151C5734AD008A094A /* Debug */ = {
+		7180566C1C737837004624BE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = CLOAuth2ViewController/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				INFOPLIST_FILE = Source/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lixiang.CLOAuth2ViewController;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CLOAuth2ViewController;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		71FBA6161C5734AD008A094A /* Release */ = {
+		7180566D1C737837004624BE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = CLOAuth2ViewController/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				INFOPLIST_FILE = Source/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lixiang.CLOAuth2ViewController;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		71FBA6181C5734AD008A094A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = CLOAuth2ViewControllerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lixiang.CLOAuth2ViewControllerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CLOAuth2ViewController.app/CLOAuth2ViewController";
-			};
-			name = Debug;
-		};
-		71FBA6191C5734AD008A094A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = CLOAuth2ViewControllerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lixiang.CLOAuth2ViewControllerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CLOAuth2ViewController.app/CLOAuth2ViewController";
+				PRODUCT_NAME = CLOAuth2ViewController;
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		71FBA5F21C5734AD008A094A /* Build configuration list for PBXProject "CLOAuth2ViewController" */ = {
+		7180565D1C737837004624BE /* Build configuration list for PBXProject "CLOAuth2ViewController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				71FBA6121C5734AD008A094A /* Debug */,
-				71FBA6131C5734AD008A094A /* Release */,
+				718056691C737837004624BE /* Debug */,
+				7180566A1C737837004624BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		71FBA6141C5734AD008A094A /* Build configuration list for PBXNativeTarget "CLOAuth2ViewController" */ = {
+		7180566B1C737837004624BE /* Build configuration list for PBXNativeTarget "iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				71FBA6151C5734AD008A094A /* Debug */,
-				71FBA6161C5734AD008A094A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		71FBA6171C5734AD008A094A /* Build configuration list for PBXNativeTarget "CLOAuth2ViewControllerTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				71FBA6181C5734AD008A094A /* Debug */,
-				71FBA6191C5734AD008A094A /* Release */,
+				7180566C1C737837004624BE /* Debug */,
+				7180566D1C737837004624BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 71FBA5EF1C5734AD008A094A /* Project object */;
+	rootObject = 7180565A1C737837004624BE /* Project object */;
 }
