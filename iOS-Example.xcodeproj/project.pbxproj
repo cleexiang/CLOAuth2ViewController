@@ -12,8 +12,8 @@
 		718056321C73776F004624BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 718056301C73776F004624BE /* Main.storyboard */; };
 		718056341C73776F004624BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 718056331C73776F004624BE /* Assets.xcassets */; };
 		718056371C73776F004624BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 718056351C73776F004624BE /* LaunchScreen.storyboard */; };
-		7180567C1C737A66004624BE /* iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 718056741C7378E2004624BE /* iOS.framework */; };
-		7180567D1C737AC1004624BE /* iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 718056741C7378E2004624BE /* iOS.framework */; };
+		7180567C1C737A66004624BE /* CLOAuth2ViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 718056741C7378E2004624BE /* CLOAuth2ViewController.framework */; };
+		7180567D1C737AC1004624BE /* CLOAuth2ViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 718056741C7378E2004624BE /* CLOAuth2ViewController.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,8 +56,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7180567D1C737AC1004624BE /* iOS.framework in Frameworks */,
-				7180567C1C737A66004624BE /* iOS.framework in Frameworks */,
+				7180567D1C737AC1004624BE /* CLOAuth2ViewController.framework in Frameworks */,
+				7180567C1C737A66004624BE /* CLOAuth2ViewController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,7 +97,7 @@
 		718056701C7378E2004624BE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				718056741C7378E2004624BE /* iOS.framework */,
+				718056741C7378E2004624BE /* CLOAuth2ViewController.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -164,10 +164,10 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		718056741C7378E2004624BE /* iOS.framework */ = {
+		718056741C7378E2004624BE /* CLOAuth2ViewController.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = iOS.framework;
+			path = CLOAuth2ViewController.framework;
 			remoteRef = 718056731C7378E2004624BE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};

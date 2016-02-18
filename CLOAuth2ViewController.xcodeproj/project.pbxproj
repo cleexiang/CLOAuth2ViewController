@@ -78,7 +78,7 @@
 				7180565F1C737837004624BE /* Frameworks */,
 				718056601C737837004624BE /* Headers */,
 				718056611C737837004624BE /* Resources */,
-				713DCBC91C741CF300F437A8 /* ShellScript */,
+				7120559C1C76084300CEE4EA /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -132,12 +132,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		713DCBC91C741CF300F437A8 /* ShellScript */ = {
+		7120559C1C76084300CEE4EA /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/ios/Alamofire.framework",
 			);
 			outputPaths = (
 			);
