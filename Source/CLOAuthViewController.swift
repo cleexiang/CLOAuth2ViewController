@@ -10,13 +10,13 @@ import UIKit
 import WebKit
 import Alamofire
 
-protocol CLOAuthViewControllerDelegate: class {
+public protocol CLOAuthViewControllerDelegate: class {
 
     func oauthSuccess(viewController: CLOAuthViewController, accessToken: String)
     func oauthFail(viewController:CLOAuthViewController, error: NSError?)
 }
 
-class CLOAuthViewController: UIViewController, WKNavigationDelegate {
+public class CLOAuthViewController: UIViewController, WKNavigationDelegate {
 
     var webView: WKWebView?
 
@@ -28,9 +28,9 @@ class CLOAuthViewController: UIViewController, WKNavigationDelegate {
     var redirectUri: String?
     var code: String?
 
-    weak var delegate: CLOAuthViewControllerDelegate?
+    public weak var delegate: CLOAuthViewControllerDelegate?
 
-    init(baseURL: String, path: String, clientId: String, clientSecret: String, scopes: Array<String>, redirectUri: String) {
+    public init(baseURL: String, path: String, clientId: String, clientSecret: String, scopes: Array<String>, redirectUri: String) {
         self.baseURL = baseURL
         self.path = path
         self.clientId = clientId
@@ -41,7 +41,7 @@ class CLOAuthViewController: UIViewController, WKNavigationDelegate {
         super.init(nibName: nil, bundle: nil)
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -50,7 +50,7 @@ class CLOAuthViewController: UIViewController, WKNavigationDelegate {
         self.webView?.navigationDelegate = nil
     }
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
@@ -78,7 +78,7 @@ class CLOAuthViewController: UIViewController, WKNavigationDelegate {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    override public func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         if keyPath?.compare("loading") == NSComparisonResult.OrderedSame {
             let isLoading = change![NSKeyValueChangeNewKey]?.boolValue!
             if isLoading == false {
@@ -104,7 +104,7 @@ class CLOAuthViewController: UIViewController, WKNavigationDelegate {
         }
     }
 
-    func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
+    public func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
         NSLog("%@", navigationAction.request.URL!)
 
         if let urlString = navigationAction.request.URL?.absoluteString {
@@ -118,11 +118,11 @@ class CLOAuthViewController: UIViewController, WKNavigationDelegate {
         decisionHandler(.Allow)
     }
 
-    func webView(webView: WKWebView, decidePolicyForNavigationResponse navigationResponse: WKNavigationResponse, decisionHandler: (WKNavigationResponsePolicy) -> Void) {
+    public func webView(webView: WKWebView, decidePolicyForNavigationResponse navigationResponse: WKNavigationResponse, decisionHandler: (WKNavigationResponsePolicy) -> Void) {
         decisionHandler(.Allow)
     }
 
-    func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
+    public func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
         NSLog("")
     }
 }
