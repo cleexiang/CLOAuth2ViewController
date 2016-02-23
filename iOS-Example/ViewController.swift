@@ -46,9 +46,7 @@ class ViewController: UIViewController, CLOAuthViewControllerDelegate {
             redirectUri: "http://www.github.com")
         oauthVC.delegate = self
         let nav = UINavigationController(rootViewController: oauthVC)
-        self.presentViewController(nav, animated: true) { () -> Void in
-
-        }
+        self.presentViewController(nav, animated: true, completion: nil)
     }
 
     func oauthSuccess(viewController: CLOAuthViewController, accessToken: String) {

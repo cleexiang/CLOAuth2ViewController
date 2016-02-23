@@ -13,7 +13,8 @@ let oauthVC = CLOAuthViewController(baseURL: "https://www.github.com",
             redirectUri: "http://www.github.com")
 oauthVC.delegate = self
 let nav = UINavigationController(rootViewController: oauthVC)
-self.presentViewController(nav, animated: true) { () -> Void in
+self.presentViewController(nav, animated: true, completion: nil)
+
 
         
 ~~~
