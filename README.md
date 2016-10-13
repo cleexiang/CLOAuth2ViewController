@@ -5,15 +5,11 @@
 
 ####  使用方法
 ~~~
-let oauthVC = CLOAuthViewController(baseURL: "https://www.github.com",
-            path: "login/oauth/authorize",
-            clientId: clientId,
-            clientSecret: clientSecret,
-            scopes: ["user", "repo", "notifications"],
-            redirectUri: "http://www.github.com")
-oauthVC.delegate = self
-let nav = UINavigationController(rootViewController: oauthVC)
-self.presentViewController(nav, animated: true, completion: nil)
+let oauthVC = CLOAuthViewController(baseURL: instagram_api,
+                                            clientId: instagram_clientId,
+                                            clientSecret: instagram_clientSecret,
+                                            scopes: instagram_scopes,
+                                            redirectUri: "your redirect uri")
 
 
         
