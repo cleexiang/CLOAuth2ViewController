@@ -8,35 +8,39 @@
 
 import UIKit
 import WebKit
-import Alamofire
+
+extension NSError {
+    class func error(_ domain: String, code: Int, description: String) -> NSError {
+        return NSError(domain: domain, code: code, userInfo: nil)
+    }
+}
 
 public protocol CLOAuthViewControllerDelegate: class {
 
-    func oauthSuccess(viewController: CLOAuthViewController, accessToken: String)
-    func oauthFail(viewController:CLOAuthViewController, error: NSError?)
+    func oauthSuccess(_ viewController: CLOAuthViewController, accessToken: String)
+    func oauthFail(_ viewController:CLOAuthViewController, error: NSError?)
 }
 
-public class CLOAuthViewController: UIViewController, WKNavigationDelegate {
+open class CLOAuthViewController: UIViewController, WKNavigationDelegate, URLSessionDelegate {
 
     var webView: WKWebView?
 
-    let baseURL: NSString
-    let path: String
+    let baseURL: String
     let clientId: String
     let clientSecret: String
     let scope: String
     var redirectUri: String?
     var code: String?
+    var task: URLSessionDataTask?
 
-    public weak var delegate: CLOAuthViewControllerDelegate?
+    open weak var delegate: CLOAuthViewControllerDelegate?
 
-    public init(baseURL: String, path: String, clientId: String, clientSecret: String, scopes: Array<String>, redirectUri: String) {
+    public init(baseURL: String, clientId: String, clientSecret: String, scopes: Array<String>, redirectUri: String) {
         self.baseURL = baseURL
-        self.path = path
         self.clientId = clientId
         self.clientSecret = clientSecret
-        self.scope = scopes.joinWithSeparator(",")
-        self.redirectUri = redirectUri.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())!
+        self.scope = scopes.joined(separator: ",")
+        self.redirectUri = redirectUri.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlHostAllowed)!
 
         super.init(nibName: nil, bundle: nil)
     }
@@ -50,79 +54,113 @@ public class CLOAuthViewController: UIViewController, WKNavigationDelegate {
         self.webView?.navigationDelegate = nil
     }
 
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel,
-            target: self, action: Selector("cancelAction"))
+        self.navigationController?.navigationBar.tintColor = UIColor.black
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
+            target: self, action: #selector(CLOAuthViewController.cancelAction))
 
         self.webView = WKWebView(frame: self.view.bounds)
         self.webView?.navigationDelegate = self;
         view.addSubview(webView!)
 
-        var queryStr = self.baseURL.stringByAppendingPathComponent(self.path).stringByAppendingFormat("?client_id=%@", self.clientId)
-        queryStr = queryStr.stringByAppendingFormat("&scope=%@", scope)
+        var queryStr = self.baseURL + "/oauth/authorize?client_id=\(self.clientId)" + "&scope=\(scope)&response_type=code" 
+        queryStr = queryStr.appendingFormat("&scope=%@", scope)
 
         if let redirectUri = self.redirectUri {
-            queryStr = queryStr.stringByAppendingFormat("&redirect_uri=%@", redirectUri)
+            queryStr = queryStr.appendingFormat("&redirect_uri=%@", redirectUri)
         }
-        if let url: NSURL = NSURL(string: queryStr) {
-            self.webView?.loadRequest(NSURLRequest(URL:url))
+        if let url: URL = URL(string: queryStr) {
+            _ = self.webView?.load(URLRequest(url:url))
         }
 
-        self.webView?.addObserver(self, forKeyPath: "loading", options: NSKeyValueObservingOptions.New, context: nil)
+        self.webView?.addObserver(self, forKeyPath: "loading", options: NSKeyValueObservingOptions.new, context: nil)
     }
 
     func cancelAction() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 
-    override public func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-        if keyPath?.compare("loading") == NSComparisonResult.OrderedSame {
-            let isLoading = change![NSKeyValueChangeNewKey]?.boolValue!
-            if isLoading == false {
+    override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath?.compare("loading") == ComparisonResult.orderedSame {
+            guard let change = change else {
+                return
+            }
+
+            guard let value = change[NSKeyValueChangeKey.newKey] else {
+                return
+            }
+            let isLoading = (value as AnyObject).boolValue!
+            if !isLoading {
                 if let code = self.code {
-                    let params = ["client_id" : self.clientId, "client_secret" : self.clientSecret, "code" : code]
                     let headers = [
                         "Content-Type": "application/x-www-form-urlencoded",
                         "Accept": "application/json"
                     ]
-                    Alamofire.request(.POST, "https://github.com/login/oauth/access_token", parameters: params, headers: headers).responseJSON{response in
-                        if let json = response.result.value {
-                            if let accessToken = json.objectForKey("access_token") {
-                                self.delegate?.oauthSuccess(self, accessToken: accessToken as! String)
+                    let url = URL(string: self.baseURL + "/oauth/access_token")
+                    var request = URLRequest(url: url!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 60.0)
+                    request.allHTTPHeaderFields = headers
+                    request.httpMethod = "POST"
+                    var bodyString = "client_id=\(self.clientId)&client_secret=\(self.clientSecret)&code=\(code)&grant_type=authorization_code"
+                    if let redirectUri = self.redirectUri {
+                        bodyString = bodyString.appendingFormat("&redirect_uri=%@", redirectUri)
+                    }
+                    request.httpBody = bodyString.data(using: .utf8)
+                    let session = URLSession(configuration: URLSessionConfiguration.default, delegate:self, delegateQueue:nil)
+                    self.task = session.dataTask(with: request, completionHandler: { (data, response, error) in
+                        if let error = error {
+                            print(error)
+                        }
+                        guard let data = data else {
+                            return
+                        }
+                        let result = String(data: data, encoding: String.Encoding.utf8)
+                        do {
+                            let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments]) as! Dictionary<String, AnyObject>
+                            if let errorMsg = json["error"] as? String {
+                                DispatchQueue.main.async {
+                                    self.delegate?.oauthFail(self, error: NSError.error("", code: 0, description: errorMsg))
+                                }
+                            } else if let accessToken = json["access_token"] as? String {
+                                DispatchQueue.main.async {
+                                    self.delegate?.oauthSuccess(self, accessToken: accessToken)
+                                }
+                            }
+                        } catch {
+                            DispatchQueue.main.async {
+                                self.delegate?.oauthFail(self, error: NSError.error("", code: 0, description: ""))
                             }
                         }
-                        else
-                        {
-                            self.delegate?.oauthFail(self, error: nil)
-                        }
-                    }
+                        
+                        
+                        print(result)
+                    })
+                    self.task!.resume()
                 }
             }
         }
     }
 
-    public func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
-        NSLog("%@", navigationAction.request.URL!)
+    open func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        print("%@", navigationAction.request.url!)
 
-        if let urlString = navigationAction.request.URL?.absoluteString {
-            if urlString.containsString("code=") {
-                let comps = urlString.componentsSeparatedByString("code=")
+        if let urlString = navigationAction.request.url?.absoluteString {
+            if urlString.contains("code=") {
+                let comps = urlString.components(separatedBy: "code=")
                 if comps.count == 2 {
                     self.code = comps.last
                 }
             }
         }
-        decisionHandler(.Allow)
+        decisionHandler(.allow)
     }
 
-    public func webView(webView: WKWebView, decidePolicyForNavigationResponse navigationResponse: WKNavigationResponse, decisionHandler: (WKNavigationResponsePolicy) -> Void) {
-        decisionHandler(.Allow)
+    open func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
+        decisionHandler(.allow)
     }
 
-    public func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
+    open func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         NSLog("")
     }
 }

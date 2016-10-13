@@ -7,13 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		713DCBC81C741CDD00F437A8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713DCBC71C741CDD00F437A8 /* Alamofire.framework */; };
 		718056771C737900004624BE /* CLOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718056751C737900004624BE /* CLOAuthViewController.swift */; };
 		718056781C737900004624BE /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 718056761C737900004624BE /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		713DCBC71C741CDD00F437A8 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		718056631C737837004624BE /* CLOAuth2ViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CLOAuth2ViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		718056751C737900004624BE /* CLOAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CLOAuthViewController.swift; path = Source/CLOAuthViewController.swift; sourceTree = SOURCE_ROOT; };
 		718056761C737900004624BE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Source/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -24,7 +22,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				713DCBC81C741CDD00F437A8 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -34,7 +31,6 @@
 		718056591C737837004624BE = {
 			isa = PBXGroup;
 			children = (
-				713DCBC71C741CDD00F437A8 /* Alamofire.framework */,
 				718056651C737837004624BE /* CLOAuth2ViewController */,
 				718056641C737837004624BE /* Products */,
 			);
@@ -78,7 +74,6 @@
 				7180565F1C737837004624BE /* Frameworks */,
 				718056601C737837004624BE /* Headers */,
 				718056611C737837004624BE /* Resources */,
-				7120559C1C76084300CEE4EA /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -100,6 +95,8 @@
 				TargetAttributes = {
 					718056621C737837004624BE = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -130,23 +127,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		7120559C1C76084300CEE4EA /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/ios/Alamofire.framework",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7180565E1C737837004624BE /* Sources */ = {
@@ -253,7 +233,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -268,6 +250,7 @@
 				PRODUCT_NAME = CLOAuth2ViewController;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -276,6 +259,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -289,6 +273,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lixiang.CLOAuth2ViewController;
 				PRODUCT_NAME = CLOAuth2ViewController;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
