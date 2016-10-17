@@ -18,7 +18,7 @@ extension NSError {
 public protocol CLOAuthViewControllerDelegate: class {
 
     func oauthSuccess(_ viewController: CLOAuthViewController, accessToken: String)
-    func oauthFail(_ viewController:CLOAuthViewController, error: NSError?)
+    func oauthFail(_ viewController: CLOAuthViewController, error: NSError?)
 }
 
 open class CLOAuthViewController: UIViewController, WKNavigationDelegate, URLSessionDelegate {
@@ -26,6 +26,8 @@ open class CLOAuthViewController: UIViewController, WKNavigationDelegate, URLSes
     var webView: WKWebView?
 
     let baseURL: String
+    let authorizePath: String
+    let accessTokenPath: String
     let clientId: String
     let clientSecret: String
     let scope: String
@@ -35,8 +37,11 @@ open class CLOAuthViewController: UIViewController, WKNavigationDelegate, URLSes
 
     open weak var delegate: CLOAuthViewControllerDelegate?
 
-    public init(baseURL: String, clientId: String, clientSecret: String, scopes: Array<String>, redirectUri: String) {
+    public init(baseURL: String, authorizePath: String = "/oauth/authorize", accessTokenPath: String = "/oauth/access_token",
+                clientId: String, clientSecret: String, scopes: Array<String>, redirectUri: String) {
         self.baseURL = baseURL
+        self.authorizePath = authorizePath
+        self.accessTokenPath = accessTokenPath
         self.clientId = clientId
         self.clientSecret = clientSecret
         self.scope = scopes.joined(separator: ",")
@@ -59,14 +64,13 @@ open class CLOAuthViewController: UIViewController, WKNavigationDelegate, URLSes
 
         self.navigationController?.navigationBar.tintColor = UIColor.black
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
-            target: self, action: #selector(CLOAuthViewController.cancelAction))
+                                                                 target: self, action: #selector(CLOAuthViewController.cancelAction))
 
         self.webView = WKWebView(frame: self.view.bounds)
-        self.webView?.navigationDelegate = self;
+        self.webView?.navigationDelegate = self
         view.addSubview(webView!)
 
-        var queryStr = self.baseURL + "/oauth/authorize?client_id=\(self.clientId)" + "&scope=\(scope)&response_type=code" 
-        queryStr = queryStr.appendingFormat("&scope=%@", scope)
+        var queryStr = self.baseURL + self.authorizePath + "?client_id=\(self.clientId)" + "&scope=\(scope)&response_type=code"
 
         if let redirectUri = self.redirectUri {
             queryStr = queryStr.appendingFormat("&redirect_uri=%@", redirectUri)
@@ -98,7 +102,7 @@ open class CLOAuthViewController: UIViewController, WKNavigationDelegate, URLSes
                         "Content-Type": "application/x-www-form-urlencoded",
                         "Accept": "application/json"
                     ]
-                    let url = URL(string: self.baseURL + "/oauth/access_token")
+                    let url = URL(string: self.baseURL + self.accessTokenPath)
                     var request = URLRequest(url: url!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 60.0)
                     request.allHTTPHeaderFields = headers
                     request.httpMethod = "POST"
@@ -132,8 +136,8 @@ open class CLOAuthViewController: UIViewController, WKNavigationDelegate, URLSes
                                 self.delegate?.oauthFail(self, error: NSError.error("", code: 0, description: ""))
                             }
                         }
-                        
-                        
+
+
                         print(result)
                     })
                     self.task!.resume()
@@ -159,9 +163,8 @@ open class CLOAuthViewController: UIViewController, WKNavigationDelegate, URLSes
     open func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         decisionHandler(.allow)
     }
-
+    
     open func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         NSLog("")
     }
 }
-
